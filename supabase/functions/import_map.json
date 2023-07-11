@@ -1,0 +1,6 @@
+{
+  "imports": {
+    "node-fetch": "./node-fetch.js",
+    "langchain/": "https://esm.sh/langchain@0.0.52/"
+  }
+}
