@@ -44,14 +44,14 @@ export async function POST(req: Request) {
     configuration.apiKey = previewToken
   }
 
-  const res = await openai.createChatCompletion({
+  const resp = await openai.createChatCompletion({
     model: 'gpt-3.5-turbo',
     messages,
     temperature: 0.7,
     stream: true
   })
 
-  const stream = OpenAIStream(res, {
+  const stream = OpenAIStream(resp, {
     async onCompletion(completion) {
       const title = json.messages[0].content.substring(0, 100)
       const id = json.id ?? nanoid()
