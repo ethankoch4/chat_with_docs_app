@@ -2,7 +2,7 @@
 // https://deno.land/manual/getting_started/setup_your_environment
 // This enables autocomplete, go to definition, etc.
 
-import { serve } from "https://deno.land/x/http/server.ts";
+import { serve } from "std/server";
 // import "https://deno.land/x/xhr@0.2.1/mod.ts";
 import { createClient, Session } from "@supabase/supabase-js";
 import { Configuration, OpenAIApi } from "openai";
