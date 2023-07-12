@@ -18,6 +18,7 @@ export async function generateMetadata({
   params
 }: ChatPageProps): Promise<Metadata> {
   const session = await auth()
+  console.log('session', session)
 
   if (!session?.user) {
     return {}
@@ -45,6 +46,8 @@ export default async function ChatPage({ params }: ChatPageProps) {
   if (chat?.userId !== session?.user?.id) {
     notFound()
   }
+  console.log('chat', chat)
+  console.log('chat id', chat.id)
 
   return <Chat id={chat.id} initialMessages={chat.messages} />
 }

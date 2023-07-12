@@ -1,6 +1,6 @@
 import { OpenAIStream, StreamingTextResponse } from 'ai'
 import { Configuration, OpenAIApi } from 'openai-edge'
-import { createRouteHandlerClient } from '@supabase/auth-helpers-nextjs'
+import { createMiddlewareSupabaseClient } from '@supabase/auth-helpers-nextjs'
 import { cookies } from 'next/headers'
 import { Database } from '@/lib/db_types'
 
@@ -16,8 +16,21 @@ const configuration = new Configuration({
 const openai = new OpenAIApi(configuration)
 
 export async function POST(req: Request) {
-  const supabase = await createRouteHandlerClient<Database>({ cookies })
+  //   const supabase = await createRouteHandlerClient<Database>({ cookies })
   const json = await req.json()
+  const res = NextResponse.next()
+  const { email, password } = json as {
+    email: string
+    password: string
+  }
+  console.log('email', email)
+  const supabase = createMiddlewareSupabaseClient({ req, res })
+  console.log(supabase)
+  const { data, error } = await supabase.auth.signInWithPassword({
+    email: email,
+    password: password
+  })
+  console.log(data)
   const { messages, previewToken } = json
   const userId = (await auth())?.user.id
 
