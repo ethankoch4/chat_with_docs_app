@@ -1,7 +1,12 @@
 {
   "imports": {
+    "axios": "https://esm.sh/axios",
+    "cheerio": "https://esm.sh/cheerio",
     "langchain/": "https://esm.sh/langchain@0.0.52/",
     "node-fetch": "./node-fetch.js",
-    "std/server": "https://deno.land/std@0.177.0/http/server.ts"
+    "openai": "https://esm.sh/openai@3.1.0",
+    "std/server": "https://deno.land/std@0.177.0/http/server.ts",
+    "std/uuid": "https://deno.land/std@0.193.0/uuid/mod.ts",
+    "@supabase/supabase-js": "https://esm.sh/@supabase/supabase-js@2.7.1"
   }
 }

@@ -3,10 +3,9 @@
 // This enables autocomplete, go to definition, etc.
 
 import { serve } from "std/server";
-// import "https://deno.land/x/xhr@0.2.1/mod.ts";
 import { createClient, Session } from "@supabase/supabase-js";
 import { Configuration, OpenAIApi } from "openai";
-import { v5 } from "uuid";
+import { v5 } from "std/uuid";
 import axios from "axios";
 import cheerio from "cheerio";
 import fetch from "node-fetch";
