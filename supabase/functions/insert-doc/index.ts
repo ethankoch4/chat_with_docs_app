@@ -2,13 +2,13 @@
 // https://deno.land/manual/getting_started/setup_your_environment
 // This enables autocomplete, go to definition, etc.
 
-import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
-import "https://deno.land/x/xhr@0.2.1/mod.ts";
-import { createClient, Session } from "https://esm.sh/@supabase/supabase-js@2";
-import { Configuration, OpenAIApi } from "https://esm.sh/openai@3.1.0";
-import { v5 } from "https://deno.land/std@0.193.0/uuid/mod.ts";
-import axios from "https://esm.sh/axios";
-import cheerio from "https://esm.sh/cheerio";
+import { serve } from "https://deno.land/x/http/server.ts";
+// import "https://deno.land/x/xhr@0.2.1/mod.ts";
+import { createClient, Session } from "@supabase/supabase-js";
+import { Configuration, OpenAIApi } from "openai";
+import { v5 } from "uuid";
+import axios from "axios";
+import cheerio from "cheerio";
 import fetch from "node-fetch";
 
 export const supabase = createClient(
