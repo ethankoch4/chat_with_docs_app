@@ -1,7 +1,7 @@
 import { OpenAIStream, StreamingTextResponse } from 'ai'
 import { Configuration, OpenAIApi } from 'openai-edge'
 import { createMiddlewareSupabaseClient } from '@supabase/auth-helpers-nextjs'
-import { NextRequest, NextApiRequest, NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 import { cookies } from 'next/headers'
 import { Database } from '@/lib/db_types'
 
@@ -15,7 +15,7 @@ const configuration = new Configuration({
 })
 
 const openai = new OpenAIApi(configuration)
-type NextApiRequestCustom = NextApiRequest & Request;
+type NextApiRequestCustom = NextRequest & Request;
 
 
 export async function POST(req: NextApiRequestCustom) {
