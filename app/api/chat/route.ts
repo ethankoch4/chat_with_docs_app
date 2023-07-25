@@ -15,8 +15,10 @@ const configuration = new Configuration({
 })
 
 const openai = new OpenAIApi(configuration)
+type NextApiRequestCustom = NextApiRequest & Request;
 
-export async function POST(req: Request) {
+
+export async function POST(req: NextApiRequestCustom) {
   //   const supabase = await createRouteHandlerClient<Database>({ cookies })
   const json = await req.json()
   const res = NextResponse.next()
