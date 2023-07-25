@@ -15,28 +15,17 @@ const configuration = new Configuration({
 })
 
 const openai = new OpenAIApi(configuration)
-type NextApiRequestCustom = NextRequest & Request;
 
-
-export async function POST(req: NextApiRequestCustom) {
-  //   const supabase = await createRouteHandlerClient<Database>({ cookies })
+export async function POST(req: Request) {
+  const supabase = createRouteHandlerClient<Database>({ cookies })
   const json = await req.json()
-  const res = NextResponse.next()
-  const { email, password } = json as {
-    email: string
-    password: string
-  }
-  console.log('email', email)
-  const supabase = createMiddlewareSupabaseClient({ req, res })
-  console.log(supabase)
-  const { data, error } = await supabase.auth.signInWithPassword({
-    email: email,
-    password: password
-  })
-  console.log(data)
   const { messages, previewToken } = json
   const userId = (await auth())?.user.id
-
+  const objectKeys = Object.keys((await auth())?.user) as Array<keyof T>;
+    for (let key of objectKeys)
+    {
+       console.log('key:' + key);
+    }
   if (!userId) {
     return new Response('Unauthorized', {
       status: 401
