@@ -21,11 +21,9 @@ export async function POST(req: Request) {
   const json = await req.json()
   const { messages, previewToken } = json
   const userId = (await auth())?.user.id
-  const objectKeys = Object.keys((await auth())?.user) as Array<keyof T>;
-    for (let key of objectKeys)
-    {
-       console.log('key:' + key);
-    }
+  const email = (await auth())?.user.id
+  console.log("email", email);
+  
   if (!userId) {
     return new Response('Unauthorized', {
       status: 401
