@@ -1,6 +1,6 @@
 import { OpenAIStream, StreamingTextResponse } from 'ai'
 import { Configuration, OpenAIApi } from 'openai-edge'
-import { createMiddlewareSupabaseClient } from '@supabase/auth-helpers-nextjs'
+import { createRouteHandlerClient } from '@supabase/auth-helpers-nextjs'
 import { NextRequest, NextResponse } from "next/server";
 import { cookies } from 'next/headers'
 import { Database } from '@/lib/db_types'
